@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddd42c83-1e65-4e3a-9fbc-6914b6c00457</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test_task1.py</StartupFile>
+    <StartupFile>task2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -35,6 +35,9 @@
   <ItemGroup>
     <Compile Include="Freq.py" />
     <Compile Include="task1.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task2.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test_common.py" />
