@@ -85,8 +85,6 @@ def table_load_dictionary_time(max_time):
     TABLE_SIZE = [250727, 402221, 1000081]
     FILE_NAMES = ["english_small.txt", "english_large.txt", "french.txt"]
 
-    start = timeit.default_timer()
-
     # Get output file handle
     f = open("output_task2.csv", 'w+', encoding="UTF-8")
 
@@ -105,7 +103,6 @@ def table_load_dictionary_time(max_time):
                 time = res[1] if res[1] is not None else "TIMEOUT"
 
                 # Print results to file
-                print('{0}, {1}, {2}, {3}'.format(file, size, base, timeit.default_timer() -  start))
                 f.write('{0},{1},{2},{3},{4}\n'.format(file, size, base, words, time))
 
     # Close file

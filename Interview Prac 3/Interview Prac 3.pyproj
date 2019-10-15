@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddd42c83-1e65-4e3a-9fbc-6914b6c00457</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>test_task2.py</StartupFile>
+    <StartupFile>task3.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>

@@ -27,6 +27,11 @@ class HashTable:
         self.base = hash_base
         self.count = 0
 
+        self.collisions = 0
+        self.probe_len = 0
+        self.probe_max = 0
+        self.rehashes = 0
+
     def __len__(self):
         """
         Will return the count of key-value pairs in the hash table
@@ -82,6 +87,12 @@ class HashTable:
         i = self.hash(key)
         n = len(self.table)
 
+        # If a pair is where this is meant to be, we have a collision
+        # If that pair has the same key we are setting, not inserting
+        # thus it cannot count as a collision.
+        if self.table[i] is not None and self.table[i][0] != key:
+            self.collisions += 1
+
         # Circularly loop until we either find the element or nothing 
         for j in range(n):
             k = (i + j) % n
@@ -90,11 +101,19 @@ class HashTable:
             if self.table[k] is None:
                 self.table[k] = (key, item)
                 self.count += 1
+
+                # We're adding a new pair, so consider probe length
+                self.probe_len += j
+                if j > self.probe_max:
+                    self.probe_max = j
+
                 return
 
             # Check if the element is the desired one
             if self.table[k][0] == key:
                 self.table[k] = (key, item)
+
+                # We're not adding a new pair, so disregard probe length
                 return
 
         # Key wasn't found nor an empty slot for it, rehash and insert
@@ -160,6 +179,12 @@ class HashTable:
         # Calculate new size
         capacity = self.get_size(len(self.table))
 
+        # Increment rehash counter, reset collisions and probes
+        self.rehashes += 1
+        self.collisions = 0
+        self.probe_len = 0
+        self.probe_max = 0
+
         tbl_old = self.table
         self.table = [None] * capacity
 
@@ -210,3 +235,15 @@ class HashTable:
 
         # No value is large enough, raise ValueError
         raise ValueError('No prime large enough for capacity; {}.'.format(capacity))
+
+
+    def statistics(self):
+        """
+        Returns a tuple of hash table statistics
+
+        @param          None
+        @return         (# of collisions, total probe length, maximum probe length, # of rehashes)
+        @complexity     O(1) for both best and worst case
+        """
+
+        return (self.collisions, self.probe_len, self.probe_max, self.rehashes)
