@@ -140,6 +140,14 @@ class TestTask1(TestCase):
       # 4 * 2 = 8, next prime is 11
       self.assertTrue(len(x.table) == 11, msg = "Premature rehash")
 
+    # Ensure values are correct after rehash
+    with self.vis():
+      self.assertEqual(x["one"], 1, msg = "Read after store failed.")
+      self.assertEqual(x["three"], 3, msg = "Read after store failed.")
+      self.assertEqual(x["five"], 5, msg = "Read after store failed.")
+      self.assertEqual(x["seven"], 7, msg = "Read after store failed.")
+      self.assertEqual(x["nine"], 9, msg = "Read after store failed.")
+
     assert self.check_okay("rehash")
 
 

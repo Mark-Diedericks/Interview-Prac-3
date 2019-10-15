@@ -16,13 +16,12 @@ def load_dictionary(hash_table, filename, time_limit = None):
 
     # Open the file, read each line, add word to hash table with value of 1
     with open(filename, 'r', encoding='utf-8') as f:
-        for line in f:
-            word = line.strip()
+        for word in f:
             hash_table[word] = 1
 
             # If we've reached our time limit, break the operation
             if time_limit is not None and timeit.default_timer() - start >= time_limit:
-                break
+                raise Exception('Time limit exceeded.')
 
     # Ensure file is closed
     if not f.closed:
@@ -36,8 +35,12 @@ def load_dictionary_time(hash_base, table_size, filename, max_time):
     # Save beginning time
     start = timeit.default_timer()
 
-    # Load the file into hash table
-    load_dictionary(tbl, filename, max_time)
+    try:
+        # Load the file into hash table
+        load_dictionary(tbl, filename, max_time)
+    except:
+        pass
+
     words = len(tbl)
 
     # Elapsed time

@@ -94,7 +94,7 @@ class HashTable:
 
             # Check if the element is the desired one
             if self.table[k][0] == key:
-                self.table[k][1] = item
+                self.table[k] = (key, item)
                 return
 
         # Key wasn't found nor an empty slot for it, rehash and insert
