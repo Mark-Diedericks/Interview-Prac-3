@@ -181,9 +181,6 @@ class HashTable:
 
         # Increment rehash counter, reset collisions and probes
         self.rehashes += 1
-        self.collisions = 0
-        self.probe_len = 0
-        self.probe_max = 0
 
         tbl_old = self.table
         self.table = [None] * capacity
