@@ -10,7 +10,7 @@ import timeit
 from task1 import HashTable
 import task2
 
-def load_dictionary_statistics(hash_base, table_size, filename, max_time):
+def load_dictionary_statistics(hash_base, table_size, filename, max_time, table = None):
     """
     Will load a file and add each line as a key to hash_table with a value of 1, returning count of words and the time taken
     
@@ -23,7 +23,7 @@ def load_dictionary_statistics(hash_base, table_size, filename, max_time):
     """
     
     # Create a hash table
-    tbl = HashTable(table_size, hash_base)
+    tbl = HashTable(table_size, hash_base) if table is None else table
     
     # Save beginning time
     start = timeit.default_timer()
@@ -58,7 +58,7 @@ def table_load_dictionary_statistics(max_time):
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
     @return         None
     @complexity     O(nm) for both best and worst case. Where n is cost of load_dictionary and m is the number of size-base-file combinations
-    @postcondition  A file, 'output_task2.csv', will contain the filename, tale, base, words and time data for each combination.
+    @postcondition  A file, 'output_task3.csv', will contain the filename, tale, base, words and time data for each combination.
     """
 
     TABLE_BASE = [1, 27183, 250726]
