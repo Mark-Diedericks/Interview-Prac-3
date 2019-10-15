@@ -10,6 +10,16 @@ import timeit
 import task1
 
 def load_dictionary(hash_table, filename, time_limit = None):
+    """
+    Will load a file and add each line as a key to hash_table with a value of 1
+    
+    @param          hash_table: the hash_table where lines will be added to
+    @param          filename: name of the file to load
+    @param          time_limit: how long the funciton operates before timing out, if none the function wont time out
+    @return         None
+    @complexity     O(mn) for both best and worst case. Where m is cost of hash table setitem and n is the number of lines
+    @postcondition  The hash table will contain all unique lines in the file as keys with values of 1
+    """
 
     # Save beginning time
     start = timeit.default_timer()
@@ -28,6 +38,16 @@ def load_dictionary(hash_table, filename, time_limit = None):
         raise IOError('File is not closed.')
 
 def load_dictionary_time(hash_base, table_size, filename, max_time):
+    """
+    Will load a file and add each line as a key to hash_table with a value of 1, returning count of words and the time taken
+    
+    @param          hash_base: the base of the hash table
+    @param          table_size: the capacity of the hash table
+    @param          filename: name of the file to load
+    @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
+    @return         (count of words, time taken)   Time taken will be None if load_dictionary timed-out
+    @complexity     O(n) for both best and worst case. Where n is cost of load_dictionary
+    """
     
     # Create a hash table
     tbl = task1.HashTable(table_size, hash_base)
@@ -51,6 +71,16 @@ def load_dictionary_time(hash_base, table_size, filename, max_time):
 
 
 def table_load_dictionary_time(max_time):
+    """
+    Will execute load_dictionary_time on a combination of files, sizes and bases. Saving the data, along with timing and words
+    to a file.
+    
+    @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
+    @return         None
+    @complexity     O(nm) for both best and worst case. Where n is cost of load_dictionary and m is the number of size-base-file combinations
+    @postcondition  A file, 'output_task2.csv', will contain the filename, tale, base, words and time data for each combination.
+    """
+
     TABLE_BASE = [1, 27183, 250726]
     TABLE_SIZE = [250727, 402221, 1000081]
     FILE_NAMES = ["english_small.txt", "english_large.txt", "french.txt"]

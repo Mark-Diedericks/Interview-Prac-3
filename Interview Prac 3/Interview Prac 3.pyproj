@@ -41,6 +41,9 @@
     <Compile Include="task2.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="task3.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="test_common.py" />
     <Compile Include="test_prac3.py" />
     <Compile Include="test_task1.py" />
