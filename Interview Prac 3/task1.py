@@ -49,8 +49,12 @@ class HashTable:
         @return         The value of associated with the given key
         @raises         KeyError: key does not exist in the hash table
         @complexity     O(m) for best case - no probing. O(n + m) for worst case - linear probing. Where n is self.count and m is key length
+        @precondition   The parameter key is of type string
         @postcondition  The value for the key will be returned if the key exists within the hash table
         """
+        
+        # assert preconditions
+        assert isinstance(key, str)
 
         # Get starting index and table size
         i = self.hash(key)
@@ -80,8 +84,12 @@ class HashTable:
         @param          item: The value associated with the key
         @return         None
         @complexity     O(m) for best case - at hash index. O(nm) for worst case - rehash. Where n is self.count and m is (average) key length
+        @precondition   The parameter key is of type string
         @postcondition  The hash table will contain the the item at for the given key
         """
+        
+        # assert preconditions
+        assert isinstance(key, str)
 
         # Get starting index and table size
         i = self.hash(key)
@@ -127,7 +135,11 @@ class HashTable:
         @param          key: the key to search for
         @return         Whether or not the key exists within the hash table
         @complexity     O(m) for best case - no probing. O(n + m) for worst case - linear probing. Where n is self.count and m is key length
+        @precondition   The parameter key is of type string
         """
+        
+        # assert preconditions
+        assert isinstance(key, str)
 
         # Get starting index and table size
         i = self.hash(key)
@@ -155,7 +167,11 @@ class HashTable:
         @param          key: the key which will be hashed
         @return         The integer hash value of the specified key
         @complexity     O(n) for both best and worst case, where n is the length of the key
+        @precondition   The parameter key is of type string
         """
+        
+        # assert preconditions
+        assert isinstance(key, str)
 
         val = 0
         # Hash key, power = self.base, divisor = len(self.table)
@@ -203,8 +219,12 @@ class HashTable:
         @return         Closest prime above double the capacity
         @raises         ValueError: when no value in PRIMES is greater than or equal to double the capacity
         @complexity     O(log n) for both best and worst case, where n is the length of PRIMES
+        @precondition   The parameter capacity is of type integer
         """
         
+        # assert preconditions
+        assert isinstance(capacity, int)
+
         # Our target value is double the capacity
         target = capacity * 2
 

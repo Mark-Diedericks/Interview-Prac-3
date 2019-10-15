@@ -20,7 +20,12 @@ def load_dictionary_statistics(hash_base, table_size, filename, max_time, table 
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
     @return         (count of words, time taken)   Time taken will be None if load_dictionary timed-out
     @complexity     O(n) for both best and worst case. Where n is cost of load_dictionary
+    @precondition   hash_base and table_size are positive integers (excluding 0)
     """
+        
+    # assert preconditions
+    assert isinstance(hash_base, int) and hash_base > 0
+    assert isinstance(table_size, int) and table_size > 0
     
     # Create a hash table
     tbl = HashTable(table_size, hash_base) if table is None else table

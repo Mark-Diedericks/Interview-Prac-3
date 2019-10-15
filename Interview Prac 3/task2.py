@@ -18,8 +18,12 @@ def load_dictionary(hash_table, filename, time_limit = None):
     @param          time_limit: how long the funciton operates before timing out, if none the function wont time out
     @return         None
     @complexity     O(mn) for both best and worst case. Where m is cost of hash table setitem and n is the number of lines
+    @precondition   hash_table should be an instance of task1.HashTable
     @postcondition  The hash table will contain all unique lines in the file as keys with values of 1
     """
+
+    # assert preconditions
+    assert isinstance(hash_table, task1.HashTable)
 
     # Save beginning time
     start = timeit.default_timer()
@@ -47,7 +51,12 @@ def load_dictionary_time(hash_base, table_size, filename, max_time):
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
     @return         (count of words, time taken)   Time taken will be None if load_dictionary timed-out
     @complexity     O(n) for both best and worst case. Where n is cost of load_dictionary
+    @precondition   hash_base and table_size are positive integers (excluding 0)
     """
+        
+    # assert preconditions
+    assert isinstance(hash_base, int) and hash_base > 0
+    assert isinstance(table_size, int) and table_size > 0
     
     # Create a hash table
     tbl = task1.HashTable(table_size, hash_base)
