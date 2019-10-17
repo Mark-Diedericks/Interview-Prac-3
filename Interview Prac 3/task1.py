@@ -3,7 +3,7 @@ List based implementation of HashTable
 
 @author         Mark Diedericks 30572738
 @since          15/10/2019
-@modified       15/10/2019
+@modified       17/10/2019
 """
 
 class HashTable:

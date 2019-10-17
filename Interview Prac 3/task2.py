@@ -3,7 +3,7 @@ HashTable based functions and timings
 
 @author         Mark Diedericks 30572738
 @since          15/10/2019
-@modified       15/10/2019
+@modified       17/10/2019
 """
 
 import timeit
@@ -87,7 +87,7 @@ def table_load_dictionary_time(max_time):
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
     @return         None
     @complexity     O(nm) for both best and worst case. Where n is cost of load_dictionary and m is the number of size-base-file combinations
-    @postcondition  A file, 'output_task2.csv', will contain the filename, tale, base, words and time data for each combination.
+    @postcondition  A file, 'output_task2.csv', will contain the filename, table, base, words and time data for each combination.
     """
 
     TABLE_BASE = [1, 27183, 250726]

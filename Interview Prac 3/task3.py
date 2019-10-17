@@ -3,7 +3,7 @@
 
 @author         Mark Diedericks 30572738
 @since          15/10/2019
-@modified       15/10/2019
+@modified       17/10/2019
 """
 
 import timeit
@@ -18,7 +18,8 @@ def load_dictionary_statistics(hash_base, table_size, filename, max_time, table 
     @param          table_size: the capacity of the hash table
     @param          filename: name of the file to load
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
-    @return         (count of words, time taken)   Time taken will be None if load_dictionary timed-out
+    @return         (count of words, time taken, collision count, probe length total, max probe length, rehash count)
+                    Time taken will be None if load_dictionary timed-out
     @complexity     O(n) for both best and worst case. Where n is cost of load_dictionary
     @precondition   hash_base and table_size are positive integers (excluding 0)
     """
@@ -63,7 +64,8 @@ def table_load_dictionary_statistics(max_time):
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
     @return         None
     @complexity     O(nm) for both best and worst case. Where n is cost of load_dictionary and m is the number of size-base-file combinations
-    @postcondition  A file, 'output_task3.csv', will contain the filename, tale, base, words and time data for each combination.
+    @postcondition  A file, 'output_task3.csv', will contain the filename, table, base, words, collisions, probe length, max probe length 
+                    and rehash count time data for each combination.
     """
 
     TABLE_BASE = [1, 27183, 250726]
