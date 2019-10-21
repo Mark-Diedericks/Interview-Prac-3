@@ -19,6 +19,7 @@ def load_dictionary(hash_table, filename, time_limit = None):
     @return         None
     @complexity     O(mn) for both best and worst case. Where m is cost of hash table setitem and n is the number of lines
     @precondition   hash_table should be an instance of task1.HashTable
+    @precondition   The file, filename, must exist
     @postcondition  The hash table will contain all unique lines in the file as keys with values of 1
     """
 
@@ -52,6 +53,7 @@ def load_dictionary_time(hash_base, table_size, filename, max_time):
     @return         (count of words, time taken)   Time taken will be None if load_dictionary timed-out
     @complexity     O(n) for both best and worst case. Where n is cost of load_dictionary
     @precondition   hash_base and table_size are positive integers (excluding 0)
+    @precondition   The file, filename, must exist
     """
         
     # assert preconditions

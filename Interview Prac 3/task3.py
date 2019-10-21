@@ -22,6 +22,7 @@ def load_dictionary_statistics(hash_base, table_size, filename, max_time, table 
                     Time taken will be None if load_dictionary timed-out
     @complexity     O(n) for both best and worst case. Where n is cost of load_dictionary
     @precondition   hash_base and table_size are positive integers (excluding 0)
+    @precondition   The file, filename, must exist
     """
         
     # assert preconditions

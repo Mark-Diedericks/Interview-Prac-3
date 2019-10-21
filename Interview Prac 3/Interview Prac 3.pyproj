@@ -35,7 +35,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bst.py" />
-    <Compile Include="Freq.py" />
     <Compile Include="task1.py">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +48,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task5.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task6.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test_common.py" />
