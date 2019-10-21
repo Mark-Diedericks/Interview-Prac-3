@@ -13,7 +13,7 @@ class HashTable:
             187751, 225307, 270371, 324449, 389357, 467237, 560689, 672827, 807403, 968897, 1162687, 1395263,
             1674319, 2009191, 2411033, 2893249, 3471899, 4166287, 4999559, 5999471, 7199369]
 
-    def __init__(self, table_capacity = 1103, hash_base = 31): 
+    def __init__(self, table_capacity = 1103, hash_base = 31, load_factor = 1): 
         """
         Instantiates a new instance of the HashTable class with a specified capacity and base.
 
@@ -26,6 +26,7 @@ class HashTable:
         self.table = [None] * table_capacity
         self.base = hash_base
         self.count = 0
+        self.load_fact = load_factor
 
         self.collisions = 0
         self.probe_len = 0
@@ -100,6 +101,10 @@ class HashTable:
         
         # assert preconditions
         assert isinstance(key, str)
+
+        # If we exceed load factor, rehash
+        if self.count >= self.load_fact * len(self.table):
+            self.rehash()
 
         # Get starting index and table size
         i = self.hash(key)

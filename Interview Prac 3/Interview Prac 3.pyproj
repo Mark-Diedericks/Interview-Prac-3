@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddd42c83-1e65-4e3a-9fbc-6914b6c00457</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>task5.py</StartupFile>
+    <StartupFile>task7.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,13 +25,6 @@
     <Content Include="Ebooks\2600-0.txt" />
     <Content Include="Ebooks\84-0.txt" />
     <Content Include="Ebooks\98-0.txt" />
-    <Content Include="english_large.txt" />
-    <Content Include="english_small.txt" />
-    <Content Include="french.txt" />
-    <Content Include="repeated.txt" />
-    <Content Include="words_empty.txt" />
-    <Content Include="words_perm.txt" />
-    <Content Include="words_simple.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bst.py" />
@@ -51,6 +44,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task6.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task7.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test_common.py" />

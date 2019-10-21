@@ -31,7 +31,8 @@ def load_dictionary(hash_table, filename, time_limit = None):
 
     # Open the file, read each line, add word to hash table with value of 1
     with open(filename, 'r', encoding='utf-8') as f:
-        for word in f:
+        for w in f:
+            word = w.replace('\n', '')
             hash_table[word] = 1
 
             # If we've reached our time limit, break the operation
