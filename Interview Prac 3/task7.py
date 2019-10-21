@@ -21,9 +21,6 @@ class Freq(FreqBase):
         """
         super().__init__()
 
-        # Load default files into hash table
-        self.load_default_frequency()
-
     def evaluate_frequency(self, filename):
         """
         Will load a file and add each line as a key to hash_table with it's frequency as the value
@@ -36,6 +33,9 @@ class Freq(FreqBase):
 
         assert isinstance(filename, str)
 
+        # Use a hash table to ensure only unique words are used
+        word_table = HashTable(1000081, 27183)
+
         # Create rarity count array, from 0, 1, 2 and 3
         rarity_counts = [0] * 4
 
@@ -46,7 +46,14 @@ class Freq(FreqBase):
                 words = line.replace('\n', '').split(' ')
 
                 for w in words:
-                    word = w.strip() # Ensure no spaces are included in the word
+                    word = w.strip().lower() # Ensure no spaces are included in the word
+
+                    # Skip word if we've already encountered it
+                    if word in word_table:
+                        continue
+
+                    # Add word to word table to ensure it isn't done again
+                    word_table[word] = 1
 
                     # Calculate the rarity score for the word and increment count for score
                     score = self.rarity(word)
@@ -63,7 +70,6 @@ class Freq(FreqBase):
 
         # Calculate percentages for each rarity
         percentages = [round(rarity_counts[i] / total * 100.0) for i in range(len(rarity_counts))]
-        print(rarity_counts)
 
         # Return percentages as tuple
         return tuple(percentages)
@@ -72,5 +78,6 @@ class Freq(FreqBase):
 if __name__ == '__main__':
     # Evaluate percentage frequencies of 84-0.txt
     f = Freq()
+    f.load_default_frequency()
     results = f.evaluate_frequency('Ebooks/84-0.txt')
     print(results)

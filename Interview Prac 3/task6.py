@@ -38,7 +38,7 @@ class Freq:
                 words = line.replace('\n', '').split(' ')
 
                 for w in words:
-                    word = w.strip() # Ensure no spaces are included in the word
+                    word = w.strip().lower() # Ensure no spaces are included in the word
 
                     if not word in self.word_frequency:  # If word does not exist in hash table, add it as 1
                         self.word_frequency[word] = 0
@@ -71,7 +71,6 @@ class Freq:
 
         # Get frequency of word
         count = self.word_frequency[word]
-        print('{} {}'.format(word, count))
 
         # Calculate score and return
         if count >= (self.max_count / 100.0):     # Appears at least max/100
