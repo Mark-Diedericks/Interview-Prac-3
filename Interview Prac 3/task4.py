@@ -6,8 +6,6 @@ Quadratic Probing Hash Table based functions, timings and statistics
 @modified       21/10/2019
 """
 
-import timeit
-import bst
 from task1 import HashTable as HashTableLinear
 from task3 import load_dictionary_statistics
 
