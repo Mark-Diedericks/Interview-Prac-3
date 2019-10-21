@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>ddd42c83-1e65-4e3a-9fbc-6914b6c00457</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>task3.py</StartupFile>
+    <StartupFile>task4.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -34,6 +34,7 @@
     <Content Include="words_simple.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bst.py" />
     <Compile Include="Freq.py" />
     <Compile Include="task1.py">
       <SubType>Code</SubType>
@@ -44,11 +45,21 @@
     <Compile Include="task3.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="task4.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task5.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="test_common.py" />
     <Compile Include="test_prac3.py" />
     <Compile Include="test_task1.py" />
     <Compile Include="test_task2.py" />
     <Compile Include="test_task3.py" />
+    <Compile Include="test_task4.py" />
+    <Compile Include="test_task5.py" />
+    <Compile Include="test_task6.py" />
+    <Compile Include="test_task7.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Ebooks\" />

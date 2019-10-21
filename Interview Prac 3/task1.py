@@ -40,6 +40,16 @@ class HashTable:
         @complexity     O(1) for both best and worst case
         """
         return self.count
+
+    def probe_step(self, i):
+        """
+        Will return an integer step for the given index.
+
+        @param          i: the index at which to calculate the step
+        @return         The step, from the original hash index, which should be taken
+        @complexity     O(1) for both best and worst case
+        """
+        return i;
   
     def __getitem__(self, key):
         """
@@ -62,7 +72,7 @@ class HashTable:
 
         # Circularly loop until we either find the element or nothing 
         for j in range(n):
-            k = (i + j) % n
+            k = (i + self.probe_step(j)) % n
 
             # Stop searching if we reach an empty slot
             if self.table[k] is None:
@@ -103,7 +113,7 @@ class HashTable:
 
         # Circularly loop until we either find the element or nothing 
         for j in range(n):
-            k = (i + j) % n
+            k = (i + self.probe_step(j)) % n
 
             # Stop searching if we reach an empty slot, just insert element
             if self.table[k] is None:
@@ -147,7 +157,7 @@ class HashTable:
 
         # Circularly loop until we either find the element or nothing 
         for j in range(n):
-            k = (i + j) % n
+            k = (i + self.probe_step(j)) % n
 
             # Stop searching if we reach an empty slot
             if self.table[k] is None:
@@ -179,7 +189,6 @@ class HashTable:
             val = (val*self.base + ord(key[i])) % len(self.table)
 
         return val
-
 
     def rehash(self):
         """

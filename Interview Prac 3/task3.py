@@ -1,5 +1,5 @@
 """
----
+HashTable based functions, timings and statistics
 
 @author         Mark Diedericks 30572738
 @since          15/10/2019
@@ -59,7 +59,7 @@ def load_dictionary_statistics(hash_base, table_size, filename, max_time, table 
 def table_load_dictionary_statistics(max_time):
     """
     Will execute load_dictionary_time on a combination of files, sizes and bases. Saving the data, along with timing and words
-    to a file.
+    to a file. Uses linear probing hash table.
     
     @param          max_time: how long load_dictionary operates before timing out, if none the function wont time out
     @return         None
