@@ -34,8 +34,12 @@ class Freq:
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:
             for line in f:
+                # Skip blank lines
+                if len(line.strip()) <= 0:
+                    continue
+                
                 # Get each individual word in the line
-                words = line.replace('\n', '').split(' ')
+                words = line.strip().replace('\n', '').split(' ')
 
                 for w in words:
                     word = w.strip().lower() # Ensure no spaces are included in the word

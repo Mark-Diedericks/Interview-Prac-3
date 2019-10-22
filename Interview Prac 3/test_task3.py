@@ -31,7 +31,7 @@ class TestTask3(TestCase):
       stats = x.statistics()
       self.assertEqual(stats, (3, 6, 3, 0), "incorrect statistics")
 
-    # Setting existing key should not be a collision
+    # Setting first existing key should not be a collision
     with self.vis("testing statistics"):
       x['abcdef'] = 1
       stats = x.statistics()

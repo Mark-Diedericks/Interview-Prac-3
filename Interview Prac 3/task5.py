@@ -98,7 +98,6 @@ class HashTable(HashTableLinear):
 
         # Get starting index and table size
         i = self.hash(key)
-        n = len(self.table)
 
         # If a pair is where this is meant to be, we have a collision
         # If that pair has the same key we are setting, not inserting

@@ -32,6 +32,26 @@ class TestTask7(TestCase):
       with self.assertRaises(Exception, msg="Missing other_filename"):
         comp = freq.evaluate_frequency('some_missing_file.txt')
 
+    ### MY TESTING ###
+
+    # Anything other than 'word' should be 3, even 'words'
+    with self.vis():
+      freq = task7.Freq()
+      freq.add_file('repeated.txt')
+      comp = freq.evaluate_frequency('words_simple.txt')
+      self.assertEqual(as_int(comp), (0, 0, 0, 100),
+        msg = "Incorrect handling of repeated words.")
+
+    # All words in words_simple.txt appear in english_small.txt once
+    # However, 'containing' does not appear in english_small.txt, thus
+    # it should be 5/6 common and 1/6 error.
+    with self.vis():
+      freq = task7.Freq()
+      freq.add_file('english_small.txt')
+      comp = freq.evaluate_frequency('words_simple.txt')
+      self.assertEqual(as_int(comp), (83, 0, 0, 17),
+        msg = "Incorrect handling of repeated words.")
+
     self.assertTrue(self.check_okay("evaluate_frequency"))
 
 if __name__ == '__main__':
