@@ -32,7 +32,7 @@ class Freq:
         @postcondition  word_frequency will contain all unique words in the file as keys with values of their frequency
         """
         assert isinstance(filename, str)
-        tans = str.maketrans('', '', string.punctuation)
+        trans = str.maketrans('', '', string.punctuation)
 
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:

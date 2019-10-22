@@ -39,7 +39,7 @@ class Freq(FreqBase):
 
         # Create rarity count array, from 0, 1, 2 and 3
         rarity_counts = [0] * 4
-        tans = str.maketrans('', '', string.punctuation)
+        trans = str.maketrans('', '', string.punctuation)
 
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:
