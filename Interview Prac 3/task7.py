@@ -22,9 +22,6 @@ class Freq(FreqBase):
         """
         super().__init__()
 
-        # Load default files into hash table
-        self.load_default_frequency()
-
     def evaluate_frequency(self, filename):
         """
         Will load a file and add each line as a key to hash_table with it's frequency as the value
@@ -37,6 +34,9 @@ class Freq(FreqBase):
 
         assert isinstance(filename, str)
 
+        # Use a hash table to ensure only unique words are used
+        word_table = HashTable(1000081, 27183)
+
         # Create rarity count array, from 0, 1, 2 and 3
         rarity_counts = [0] * 4
         tans = str.maketrans('', '', string.punctuation)
@@ -44,11 +44,23 @@ class Freq(FreqBase):
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:
             for line in f:
+                # Skip blank lines
+                if len(line.strip()) <= 0:
+                    continue
+                
                 # Get each individual word in the line
-                words = line.replace('\n', '').split(' ')
+                words = line.strip().replace('\n', '').split(' ')
+
 
                 for w in words:
-                    word = w.strip().translate(trans) # Ensure no spaces or punctuation are included in the word
+                    word = w.strip().lower().translate(trans) # Ensure no spaces or punctuation are included in the word
+
+                    # Skip word if we've already encountered it
+                    if word in word_table:
+                        continue
+
+                    # Add word to word table to ensure it isn't done again
+                    word_table[word] = 1
 
                     # Calculate the rarity score for the word and increment count for score
                     score = self.rarity(word)
@@ -65,7 +77,6 @@ class Freq(FreqBase):
 
         # Calculate percentages for each rarity
         percentages = [round(rarity_counts[i] / total * 100.0) for i in range(len(rarity_counts))]
-        print(rarity_counts)
 
         # Return percentages as tuple
         return tuple(percentages)
@@ -74,5 +85,6 @@ class Freq(FreqBase):
 if __name__ == '__main__':
     # Evaluate percentage frequencies of 84-0.txt
     f = Freq()
+    f.load_default_frequency()
     results = f.evaluate_frequency('Ebooks/84-0.txt')
     print(results)

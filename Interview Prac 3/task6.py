@@ -37,11 +37,15 @@ class Freq:
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:
             for line in f:
+                # Skip blank lines
+                if len(line.strip()) <= 0:
+                    continue
+                
                 # Get each individual word in the line
-                words = line.replace('\n', '').split(' ')
+                words = line.strip().replace('\n', '').split(' ')
 
                 for w in words:
-                    word = w.strip().translate(trans) # Ensure no spaces or punctuation are included in the word
+                    word = w.strip().lower().translate(trans) # Ensure no spaces or punctuation are included in the word
 
                     if not word in self.word_frequency:  # If word does not exist in hash table, add it as 1
                         self.word_frequency[word] = 0
@@ -74,7 +78,6 @@ class Freq:
 
         # Get frequency of word
         count = self.word_frequency[word]
-        print('{} {}'.format(word, count))
 
         # Calculate score and return
         if count >= (self.max_count / 100.0):     # Appears at least max/100
