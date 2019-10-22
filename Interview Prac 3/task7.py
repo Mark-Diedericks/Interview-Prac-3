@@ -8,6 +8,7 @@ Linear Probing Hash Table based frequency analysis of text files, extended
 
 from task1 import HashTable
 from task6 import Freq as FreqBase
+import string
 
 class Freq(FreqBase):
     def __init__(self):
@@ -38,6 +39,7 @@ class Freq(FreqBase):
 
         # Create rarity count array, from 0, 1, 2 and 3
         rarity_counts = [0] * 4
+        tans = str.maketrans('', '', string.punctuation)
 
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:
@@ -46,7 +48,7 @@ class Freq(FreqBase):
                 words = line.replace('\n', '').split(' ')
 
                 for w in words:
-                    word = w.strip() # Ensure no spaces are included in the word
+                    word = w.strip().translate(trans) # Ensure no spaces or punctuation are included in the word
 
                     # Calculate the rarity score for the word and increment count for score
                     score = self.rarity(word)

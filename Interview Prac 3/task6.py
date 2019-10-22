@@ -7,6 +7,8 @@ Linear Probing Hash Table based frequency analysis of text files
 """
 
 from task1 import HashTable
+import string
+
 class Freq:
     def __init__(self):
         """
@@ -30,6 +32,7 @@ class Freq:
         @postcondition  word_frequency will contain all unique words in the file as keys with values of their frequency
         """
         assert isinstance(filename, str)
+        tans = str.maketrans('', '', string.punctuation)
 
         # Open the file, read each line, add word to hash table with value of 1
         with open(filename, 'r', encoding='utf-8') as f:
@@ -38,7 +41,7 @@ class Freq:
                 words = line.replace('\n', '').split(' ')
 
                 for w in words:
-                    word = w.strip() # Ensure no spaces are included in the word
+                    word = w.strip().translate(trans) # Ensure no spaces or punctuation are included in the word
 
                     if not word in self.word_frequency:  # If word does not exist in hash table, add it as 1
                         self.word_frequency[word] = 0
