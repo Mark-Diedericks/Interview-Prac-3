@@ -59,7 +59,7 @@ class HashTable:
         @param          key: The key to search for and get it's value
         @return         The value of associated with the given key
         @raises         KeyError: key does not exist in the hash table
-        @complexity     O(m) for best case - no probing. O(n + m) for worst case - linear probing. Where n is self.count and m is key length
+        @complexity     O(m) for best case - no probing. O(n + m) for worst case - linear probing low base. Where n is self.count and m is key length
         @precondition   The parameter key is of type string
         @postcondition  The value for the key will be returned if the key exists within the hash table
         """
@@ -94,7 +94,7 @@ class HashTable:
         @param          key: The key of the key value pair, hashed to find index
         @param          item: The value associated with the key
         @return         None
-        @complexity     O(m) for best case - at hash index. O(nm) for worst case - rehash. Where n is self.count and m is (average) key length
+        @complexity     O(m) for best case - at hash index. O(nm) for worst case - rehash with low base. Where n is self.count and m is (average) key length
         @precondition   The parameter key is of type string
         @postcondition  The hash table will contain the the item at for the given key
         """
@@ -149,7 +149,7 @@ class HashTable:
 
         @param          key: the key to search for
         @return         Whether or not the key exists within the hash table
-        @complexity     O(m) for best case - no probing. O(n + m) for worst case - linear probing. Where n is self.count and m is key length
+        @complexity     O(m) for best case - no probing. O(n + m) for worst case - linear probing with low base. Where n is self.count and m is key length
         @precondition   The parameter key is of type string
         """
         
@@ -202,7 +202,7 @@ class HashTable:
 
         @param          None
         @return         None
-        @complexity     O(mn) best case - no collisions inserting. O(mn^2) for worst case - maximum collisions inserting. Where m is (average) key length and n is self.count
+        @complexity     O(mn) best case - no collisions inserting. O(mn^2) for worst case - maximum collisions inserting, low base. Where m is (average) key length and n is self.count
         @postcondition  The hash table will contain the same key-value pairs however will have a capacity of double rounded up to the nearest prime in PRIMES.
         """
 
